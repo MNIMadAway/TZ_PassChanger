@@ -51,6 +51,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Script1.ps1" />
     <Compile Include="TZ_PassChanger.designer.ps1">
       <SubType>Code</SubType>
       <DependentUpon>TZ_PassChanger.ps1</DependentUpon>

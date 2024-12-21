@@ -3,23 +3,6 @@ Import-Module "C:\PS\ADPoSh\Microsoft.ActiveDirectory.Management.dll"
 Add-Type -AssemblyName PresentationFramework
 
 
-$Username = 'mitest\admin'
-$Password = 'Cisco123$'
-$pass = ConvertTo-SecureString -AsPlainText $Password -Force
-$SecureString = $pass
-# Users you password securly
-$MySecureCreds = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $Username,$SecureString 
-
-$iam = $env:USERNAME
-$1 = Invoke-Command DC-001 -Credential $MySecureCreds -scriptblock{
-
-  $user = Get-ADUser -Identity "$Using:iam" -Properties description | Select  Name, description
-  return $user
-  }
-
-$result = ($1 |Select description).description
-
-if ($result -like "*paswd*") {
 function Compare-SecureString {
   param(
     [Security.SecureString]
@@ -62,7 +45,7 @@ If (Compare-SecureString $1 $2){
 }
 else { [System.Windows.MessageBox]::Show('¬ведЄнные пароли не совпадают')}
 }
-}
+
 
 $label2_Click = {
 
